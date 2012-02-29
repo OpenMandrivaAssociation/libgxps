@@ -14,6 +14,7 @@ License:	LGPLv2
 Group:		System/Libraries
 URL:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		libgxps-0.2.1_linking.patch
 BuildRequires: pkgconfig(cairo) >= 1.10.0
 BuildRequires: pkgconfig(cairo-pdf)
 BuildRequires: pkgconfig(cairo-ps)
@@ -62,11 +63,13 @@ This package contains the files necessary to develop applications with libgxps.
 
 %prep
 %setup -q
+%apply_patches
+autoreconf -fi
 
 %build
 %configure2_5x \
 	--disable-static
-%make LIBS='-lgmodule-2.0'
+%make
 
 %install
 %makeinstall_std
