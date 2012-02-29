@@ -66,7 +66,7 @@ This package contains the files necessary to develop applications with libgxps.
 %build
 %configure2_5x \
 	--disable-static
-%make
+%make LIBS='-lgmodule-2.0'
 
 %install
 %makeinstall_std
