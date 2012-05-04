@@ -1,35 +1,33 @@
+%define url_ver	%(echo %{version}|cut -d. -f1,2)
+
 %define api	0.1
 %define major	2
 %define libname	%mklibname gxps %{major}
 %define girname		%mklibname gxps-gir %{api}
 %define develname	%mklibname -d gxps
 
-%define url_ver	%(echo %{version}|cut -d. -f1,2)
-
 Summary:	GObject based library for handling and rendering XPS documents
 Name:		libgxps
-Version:	0.2.1
+Version:	0.2.2
 Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 URL:		http://www.gnome.org/
-Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	http://download.gnome.org/sources/libgxps/%{url_ver}/%{name}-%{version}.tar.xz
 Patch0:		libgxps-0.2.1_linking.patch
-BuildRequires: pkgconfig(cairo) >= 1.10.0
+BuildRequires: gtk-doc
+BuildRequires: jpeg-devel
+BuildRequires: tiff-devel
+BuildRequires: pkgconfig(cairo)
 BuildRequires: pkgconfig(cairo-pdf)
 BuildRequires: pkgconfig(cairo-ps)
 BuildRequires: pkgconfig(cairo-svg)
 BuildRequires: pkgconfig(freetype2)
-BuildRequires: pkgconfig(gio-2.0) >= 2.24
-BuildRequires: pkgconfig(glib-2.0) >= 2.24
-BuildRequires: pkgconfig(gobject-2.0) >= 2.24
+BuildRequires: pkgconfig(glib-2.0)
+BuildRequires: pkgconfig(gobject-introspection-1.0)
 BuildRequires: pkgconfig(lcms2)
-BuildRequires: pkgconfig(libarchive) >= 2.8.0
+BuildRequires: pkgconfig(libarchive)
 BuildRequires: pkgconfig(libpng)
-BuildRequires: jpeg-devel
-BuildRequires: tiff-devel
-BuildRequires: gtk-doc
-BuildRequires: gobject-introspection-devel >= 0.9.5
 
 %description
 libgxps is a GObject based library for handling and rendering XPS documents.
@@ -45,7 +43,6 @@ libgxps is a GObject based library for handling and rendering XPS documents.
 %package -n %{girname}
 Summary:	GObject Introspection interface library for libgxps
 Group:		System/Libraries
-Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface library for libgxps.
@@ -55,6 +52,7 @@ Summary:	Development libraries, header files and utilities for libgxps
 Group:		Development/GNOME and GTK+
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
+Requires:	%{girname} = %{version}-%{release}
 
 %description -n %{develname}
 libgxps is a GObject based library for handling and rendering XPS documents.
