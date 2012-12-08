@@ -91,3 +91,18 @@ rm -f %buildroot%_libdir/*.la
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 
+
+
+%changelog
+* Fri May 04 2012 Matthew Dawkins <mattydaw@mandriva.org> 0.2.2-1
++ Revision: 795822
+- new version 0.2.2
+
+* Wed Feb 29 2012 Matthew Dawkins <mattydaw@mandriva.org> 0.2.1-1
++ Revision: 781414
+- added p0 for proper linking
+- removed unnecessary suggests
+- clean up spec before first commit
+- imported package libgxps
+
+
