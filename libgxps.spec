@@ -5,6 +5,7 @@
 %define libname %mklibname gxps %{major}
 %define girname %mklibname gxps-gir %{api}
 %define devname %mklibname -d gxps
+%define _disable_ld_no_undefined 1
 
 Summary:	GObject based library for handling and rendering XPS documents
 Name:		libgxps
