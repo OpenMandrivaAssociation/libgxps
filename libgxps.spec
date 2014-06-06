@@ -1,20 +1,20 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
 
-%define api	0.1
-%define major	2
-%define libname	%mklibname gxps %{major}
-%define girname	%mklibname gxps-gir %{api}
-%define devname	%mklibname -d gxps
+%define api 0.1
+%define major 2
+%define libname %mklibname gxps %{major}
+%define girname %mklibname gxps-gir %{api}
+%define devname %mklibname -d gxps
 
 Summary:	GObject based library for handling and rendering XPS documents
 Name:		libgxps
 Version:	0.2.2
-Release:	6
+Release:	7
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/libgxps/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:	libgxps-0.2.1_linking.patch
+Patch0:		libgxps-0.2.1_linking.patch
 BuildRequires:	gtk-doc
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
@@ -63,7 +63,7 @@ This package contains the files necessary to develop applications with libgxps.
 autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 %make
 
