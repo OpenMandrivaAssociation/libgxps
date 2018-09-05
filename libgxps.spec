@@ -9,13 +9,13 @@
 
 Summary:	GObject based library for handling and rendering XPS documents
 Name:		libgxps
-Version:	0.2.3.2
-Release:	13
+Version:	0.3.0
+Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/libgxps/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		libgxps-0.2.1_linking.patch
+#Patch0:		libgxps-0.2.1_linking.patch
 BuildRequires:	gtk-doc
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
@@ -29,6 +29,8 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(gtk+-3.0)
+BuildRequires:	meson
 
 %description
 libgxps is a GObject based library for handling and rendering XPS documents.
@@ -60,19 +62,21 @@ This package contains the files necessary to develop applications with libgxps.
 
 %prep
 %setup -q
-%apply_patches
-autoreconf -fi
+#apply_patches
 
 %build
-%configure \
-	--disable-static
-%make
+%meson		\
+	-Denable-gtk-doc=true	\
+	-Denable-man=true
+%meson_build
 
 %install
-%makeinstall_std
+export LANG=UTF-8
+%meson_install
 
 %files
 %{_bindir}/*
+%{_mandir}/man1/*.1*
 
 %files -n %{libname}
 %{_libdir}/libgxps.so.%{major}*
