@@ -76,6 +76,7 @@ export LANG=UTF-8
 
 %files
 %{_bindir}/*
+%{_mandir}/man1/*.1*
 
 %files -n %{libname}
 %{_libdir}/libgxps.so.%{major}*
