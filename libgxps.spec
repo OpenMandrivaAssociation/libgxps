@@ -15,7 +15,7 @@ License:	LGPLv2
 Group:		System/Libraries
 Url:		http://www.gnome.org/
 Source0:	http://download.gnome.org/sources/libgxps/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		libgxps-0.2.1_linking.patch
+#Patch0:		libgxps-0.2.1_linking.patch
 BuildRequires:	gtk-doc
 BuildRequires:	jpeg-devel
 BuildRequires:	tiff-devel
