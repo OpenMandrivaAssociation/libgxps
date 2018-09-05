@@ -29,6 +29,7 @@ BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(lcms2)
 BuildRequires:	pkgconfig(libarchive)
 BuildRequires:	pkgconfig(libpng)
+BuildRequires:	meson
 
 %description
 libgxps is a GObject based library for handling and rendering XPS documents.
@@ -64,12 +65,14 @@ This package contains the files necessary to develop applications with libgxps.
 autoreconf -fi
 
 %build
-%configure \
-	--disable-static
-%make
+%meson		\
+	-Denable-gtk-doc=true	\
+	-Denable-man=true
+%meson_build
 
 %install
-%makeinstall_std
+export LANG=UTF-8
+%meson_install
 
 %files
 %{_bindir}/*
