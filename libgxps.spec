@@ -9,8 +9,8 @@
 
 Summary:	GObject based library for handling and rendering XPS documents
 Name:		libgxps
-Version:	0.2.3.2
-Release:	12
+Version:	0.2.5
+Release:	1
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://www.gnome.org/
