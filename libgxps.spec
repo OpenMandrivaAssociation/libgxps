@@ -62,7 +62,7 @@ This package contains the files necessary to develop applications with libgxps.
 
 %prep
 %setup -q
-#apply_patches
+#autopatch -p1
 
 %build
 %meson		\
